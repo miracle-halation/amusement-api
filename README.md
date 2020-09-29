@@ -8,27 +8,34 @@
 | password | string | null: false |
 | admin | boolean  | null: false, default: false |
 
-
-## Pazzle
+## Shape
 | Column | type | Options |
 | ------ | ---- | ------- |
 | name | string | null: false |
 | image | string | null: false |
 
 ## Association
-- has_many :shapes, through: :pazzle_shapes
-- has_many :pazzle_shapes
+- has_many :puzzles
+- has_many :pieces
 
-
-## Shape
+## Piece
 | Column | type | Options |
 | ------ | ---- | ------- |
 | name | string | null: false |
+| shape_id | references | foreign_key: true, null:false |
 
 ## Association
-- has_many :pazzles, through: :pazzle_shapes
-- has_many :pazzle_shapes
+- belongs_to :shape
 
+## Puzzle
+| Column | type | Options |
+| ------ | ---- | ------- |
+| name | string | null: false |
+| image | string | null: false |
+| shape_id | references | foreign_key: true, null: false |
+
+## Association
+- belongs_to :shape
 
 ## Kanji
 | Column | type | Options |
