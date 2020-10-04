@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_29_070902) do
+ActiveRecord::Schema.define(version: 2020_10_04_233605) do
 
   create_table "pieces", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2020_09_29_070902) do
     t.bigint "shape_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "image", null: false
     t.index ["shape_id"], name: "index_puzzles_on_shape_id"
   end
 
@@ -32,6 +33,7 @@ ActiveRecord::Schema.define(version: 2020_09_29_070902) do
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "image", null: false
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
