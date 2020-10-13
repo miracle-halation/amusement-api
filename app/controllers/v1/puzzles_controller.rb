@@ -6,8 +6,7 @@ class V1::PuzzlesController < ApplicationController
 
 	def show
 		puzzle = Puzzle.find(params[:id])
-		shape = puzzle.shape
-		render json: [puzzle, shape]
+		render json: puzzle
 	end
 
 	def new
