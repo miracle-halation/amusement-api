@@ -10,7 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_26_003300) do
+ActiveRecord::Schema.define(version: 2020_11_07_052539) do
+
+  create_table "pieces", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.bigint "shape_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.boolean "select", default: false, null: false
+    t.integer "angle", default: 0, null: false
+    t.index ["shape_id"], name: "index_pieces_on_shape_id"
+  end
+
+  create_table "puzzles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.bigint "shape_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "image", null: false
+    t.index ["shape_id"], name: "index_puzzles_on_shape_id"
+  end
+
+  create_table "shapes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "image", null: false
+  end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -22,4 +48,6 @@ ActiveRecord::Schema.define(version: 2020_09_26_003300) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "pieces", "shapes"
+  add_foreign_key "puzzles", "shapes"
 end
